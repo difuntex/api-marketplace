@@ -15,11 +15,8 @@ class CategoriaController {
   async store({ request, auth }) {
     const user = await auth.getUser();
     const data = request.only(["descricao"]);
-    const storeSQL = `
-    insert into categoria(descricao) values(?)
-    `;
-    await Database.raw(storeSQL,data.descricao)
-    return{success:true,message:"Categoria cadastrada com sucesso"}
+    await Categoria.create(data);
+    return { success: true, message: "Categoria cadastrada com sucesso" };
   }
 }
 
