@@ -17,7 +17,7 @@ class AuthController {
       "bairro",
     ]);
     const user = await User.create(data);
-    return user;
+    return {success:true,user,message:"Usuario cadastrado com sucesso!"};
   }
   async authenticate({ request, auth }) {
     const { email, password } = request.all();

@@ -6,3 +6,5 @@ Route.post("register", "Authcontroller.register");
 Route.post("authenticate", "AuthController.authenticate");
 
 Route.get("/app", "AppController.index").middleware(["auth"]);
+
+Route.get("/categorias", "CategoriaController.index");
