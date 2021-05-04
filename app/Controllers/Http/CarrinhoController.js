@@ -29,9 +29,21 @@ class CarrinhoController {
         WHERE  cliente_id = ?
             AND ativo = 1      
     `;
-    let carrinho = await Database.raw(carrinhoSql,user.id)
-    return carrinho.rows;
+    let carrinho = await Database.raw(carrinhoSql, user.id);
+    const valorTotalDoCarrinhoSql = `
+        SELECT Sum(produto_valor) as total
+        FROM   carrinho
+        WHERE  cliente_id = ?
+            AND ativo = 1       
+    `;
+    let total = await Database.raw(valorTotalDoCarrinhoSql, user.id);
 
+    //  carrinho.rows += [...carrinho.rows, total.rows];
+    //let valor_total= total.rows.total
+    let valor = [...carrinho.rows, total.rows[0].total];
+
+    return valor;
+    return carrinho;
   }
 }
 
