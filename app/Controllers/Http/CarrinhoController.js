@@ -14,10 +14,24 @@ class CarrinhoController {
     data.ativo = 1;
     data.cliente_id = user.id;
     let produto = await Produto.findByOrFail("produto_id_pk", data.produto_id);
-    data.produto_valor = produto.produto_preco_venda;    
+    data.produto_valor = produto.produto_preco_venda;
     await Carrinho.create(data);
-    return { success: true, message: "Produto inserido ao carrinho com sucesso" };
-    
+    return {
+      success: true,
+      message: "Produto inserido ao carrinho com sucesso",
+    };
+  }
+  async show({ auth }) {
+    const user = await auth.getUser();
+    const carrinhoSql = `
+        SELECT *
+        FROM   carrinho
+        WHERE  cliente_id = ?
+            AND ativo = 1      
+    `;
+    let carrinho = await Database.raw(carrinhoSql,user.id)
+    return carrinho.rows;
+
   }
 }
 
