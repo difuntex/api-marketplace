@@ -39,8 +39,10 @@ class CarrinhoController {
     let total = await Database.raw(valorTotalDoCarrinhoSql, user.id);
 
     //  carrinho.rows += [...carrinho.rows, total.rows];
-    //let valor_total= total.rows.total
-    let valor = [...carrinho.rows, total.rows[0].total];
+    let valor_total = [];
+    valor_total.valor = total.rows[0].total;
+    console.log(valor_total);
+    let valor = [...carrinho.rows, valor_total];
 
     return valor;
     return carrinho;
