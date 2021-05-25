@@ -12,7 +12,8 @@ Route.post("/categorias", "CategoriaController.store");
 Route.put("/categorias", "CategoriaController.update");
 Route.delete("/categorias", "CategoriaController.delete");
 
-Route.get("/produtos/:id", "ProdutoController.show");
+Route.get("/produtos_categoria/:id", "ProdutoController.buscaPorCategoria");
+Route.get("/produtos", "ProdutoController.buscaPorNome");
 
 Route.post("/carrinho", "CarrinhoController.store");
 Route.get("/carrinho", "CarrinhoController.show");
