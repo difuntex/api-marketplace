@@ -12,6 +12,7 @@ class ProdutoController {
   }
   async buscaPorNome({ request }) {
     let body = request.all();
+    console.log(body)
     const produtoSQL = `
     SELECT produto_nome, produto_preco_venda, c.descricao
     FROM produto p, categoria c
