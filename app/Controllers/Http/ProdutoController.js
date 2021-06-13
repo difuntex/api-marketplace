@@ -4,7 +4,7 @@ const Database = use("Database");
 class ProdutoController {
   async buscaPorCategoria({ params }) {
     const produtoSQL = `
-    SELECT produto_nome, produto_preco_venda
+    SELECT produto_nome, produto_preco_venda, produto_imagem,produto_id_pk
     FROM   produto where categoria_id = ?
 `;
     let produtos = await Database.raw(produtoSQL, params.id);
