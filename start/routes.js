@@ -17,3 +17,5 @@ Route.get("/produtos", "ProdutoController.buscaPorNome");
 
 Route.post("/carrinho", "CarrinhoController.store");
 Route.get("/carrinho", "CarrinhoController.show");
+
+Route.get("/venda", "Vendacontroller.venda");
