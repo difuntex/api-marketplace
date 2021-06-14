@@ -13,7 +13,7 @@ class ProdutoController {
   async buscaPorNome({ request }) {
     let body = request.all();
     const produtoSQL = `
-    SELECT produto_nome, produto_preco_venda, c.descricao
+    SELECT produto_nome, produto_preco_venda, c.descricao, produto_iamgem,porduto_id_pk
     FROM produto p, categoria c
     WHERE produto_nome like '%${body.produto_nome}%' and p.categoria_id = c.id
 `;
